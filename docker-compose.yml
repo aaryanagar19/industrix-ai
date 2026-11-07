@@ -1,0 +1,32 @@
+# Full local stack:  docker compose up --build   ->  UI http://localhost:8080   API docs http://localhost:8000/docs
+# NOTE: written for, but not executed in, the authoring environment (no Docker daemon available there). Please verify on your machine.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-industrix}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-industrix}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-industrix}"]
+      interval: 5s
+      retries: 10
+  backend:
+    build: { context: ., dockerfile: backend/Dockerfile }
+    environment:
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER:-industrix}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-industrix}
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY in .env}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
+      SIMULATOR_AUTOSTART: ${SIMULATOR_AUTOSTART:-true}
+      SEED_ON_START: ${SEED_ON_START:-true}
+    depends_on: { db: { condition: service_healthy } }
+    ports: ["8000:8000"]
+    volumes: ["storage:/app/storage"]
+  frontend:
+    build: { context: frontend }
+    depends_on: [backend]
+    ports: ["8080:80"]
+volumes:
+  pgdata: {}
+  storage: {}

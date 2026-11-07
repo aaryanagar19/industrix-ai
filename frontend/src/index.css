@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 244 247 250; --surface: 255 255 255; --surface2: 238 243 248; --line: 218 226 236; --ink: 15 30 45; --muted: 100 116 139;
+  --accent: 8 145 178; --ok: 5 150 105; --warn: 217 119 6; --orange: 234 88 12; --danger: 220 38 38;
+}
+.dark {
+  --bg: 8 15 24; --surface: 14 25 38; --surface2: 20 34 50; --line: 33 52 72; --ink: 226 234 242; --muted: 130 150 172;
+  --accent: 34 211 238; --ok: 52 211 153; --warn: 251 191 36; --orange: 251 146 60; --danger: 248 113 113;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; background-image: radial-gradient(1200px 500px at 85% -10%, rgb(var(--accent) / .07), transparent 60%); }
+* { scrollbar-width: thin; scrollbar-color: rgb(var(--line)) transparent; }
+@layer components {
+.card { @apply rounded-xl border border-line bg-surface shadow-sm; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60; }
+.btn-primary { @apply btn bg-accent text-bg hover:brightness-110; }
+.btn-ghost { @apply btn border border-line bg-surface2/50 hover:bg-surface2 text-ink; }
+.btn-danger { @apply btn bg-danger/15 text-danger border border-danger/40 hover:bg-danger/25; }
+.input { @apply w-full rounded-lg border border-line bg-surface2/60 px-3 py-2 text-sm text-ink placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/50; }
+.label { @apply mb-1 block text-xs font-medium uppercase tracking-wide text-muted; }
+.th { @apply px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-muted; }
+.td { @apply px-3 py-2 text-sm; }
+}
+
+.recharts-tooltip-wrapper { outline: none; }
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skeleton { @apply relative overflow-hidden rounded-md bg-surface2; }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgb(var(--line) / .6), transparent); animation: shimmer 1.4s infinite; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

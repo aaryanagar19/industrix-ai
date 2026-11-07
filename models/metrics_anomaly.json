@@ -1,0 +1,26 @@
+{
+  "version": "anomaly-iforest-202611040918",
+  "trained_at": "2026-11-04T09:18:02.117810Z",
+  "data_origin": "synthetic",
+  "rows_train": 76582,
+  "contamination": 0.005,
+  "training_set": "healthy reference period (latent degradation < 0.05)",
+  "min_abs_z": 2.0,
+  "severity_thresholds": {
+    "medium": 0.0,
+    "high": -0.013574662160764047,
+    "critical": -0.045714298586497316
+  },
+  "flag_rate_healthy_periods_heldout": 0.014,
+  "flag_rate_during_severe_degradation_heldout": 0.7825,
+  "z_guard": 3.5,
+  "detection_rate_on_injected_anomalies": {
+    "temperature_spike_+5\u03c3": 1.0,
+    "vibration_surge_+5\u03c3": 1.0,
+    "pressure_instability_\u00b15\u03c3": 1.0,
+    "load_overload_+4\u03c3": 0.71,
+    "combined_mild_+2.5\u03c3_on_all": 0.5693,
+    "combined_mild_+2\u03c3_temp_vib": 0.0
+  },
+  "note": "Hybrid detector (Isolation Forest + z-score guard). Flag rate on healthy periods is the false-alarm rate; flag rate during degradation is the detection rate. Detection rates are on synthetically injected deviations, not on real faults."
+}

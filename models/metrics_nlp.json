@@ -1,0 +1,19 @@
+{
+  "version": "nlp-tfidf-lr-202611040918",
+  "trained_at": "2026-11-04T09:18:27.523650Z",
+  "data_origin": "synthetic-templates",
+  "classes": [
+    "equipment_failure",
+    "fire_overheat",
+    "leak_spill",
+    "electrical",
+    "near_miss",
+    "routine_maintenance",
+    "personal_injury"
+  ],
+  "n_train": 252,
+  "n_test": 84,
+  "note": "Trained on a small templated synthetic corpus; accuracy on held-out templates is optimistic vs. real free-text reports. Rule-based fallbacks are used when classifier confidence is low.",
+  "heldout_template_accuracy_classifier_only": 0.5714,
+  "heldout_template_accuracy_full_pipeline": 0.6667
+}

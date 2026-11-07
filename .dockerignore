@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/__pycache__
+*.db
+*.db-*
+storage
+.git
+e2e

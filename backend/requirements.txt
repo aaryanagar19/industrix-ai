@@ -1,0 +1,23 @@
+# Tested with Python 3.12. TensorFlow (CPU) is only needed for the LSTM forecaster; it is the largest dependency.
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.6
+alembic==1.20.1
+pydantic==2.14.2
+pydantic-settings==2.16.2
+python-jose[cryptography]==3.5.0
+bcrypt==5.0.0
+python-multipart==0.0.33
+httpx==0.28.1
+psycopg2-binary==2.9.13
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+scipy==1.17.1
+xgboost==3.4.1
+shap==0.54.1
+joblib==1.5.3
+matplotlib==3.10.8
+tensorflow-cpu==2.21.0
+reportlab==4.4.10
+pypdf==5.9.0

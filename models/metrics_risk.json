@@ -1,0 +1,308 @@
+{
+  "trained_at": "2026-11-06T13:52:17.772306Z",
+  "data_origin": "synthetic",
+  "rows": {
+    "train": 67104,
+    "validation": 15264,
+    "test": 20736
+  },
+  "positive_rate": {
+    "train": 0.0509,
+    "validation": 0.048,
+    "test": 0.0479
+  },
+  "features": [
+    "temperature_dev",
+    "vibration_dev",
+    "pressure_dev",
+    "load_pct",
+    "equipment_age_years",
+    "maintenance_delay_days",
+    "previous_incidents",
+    "shift_hours",
+    "production_intensity",
+    "weather_severity",
+    "inspection_status",
+    "temperature_trend",
+    "vibration_trend"
+  ],
+  "split": "chronological 65/15/20 with 6h purge gap",
+  "models": {
+    "xgboost": {
+      "roc_auc": 0.8644,
+      "pr_auc": 0.5532,
+      "brier_uncalibrated": 0.038,
+      "brier_calibrated": 0.0277,
+      "thresholds": {
+        "moderate": 0.0142,
+        "high": 0.1123,
+        "critical": 0.1516
+      },
+      "at_thresholds": {
+        "moderate": {
+          "threshold": 0.0142,
+          "accuracy": 0.3243,
+          "precision": 0.063,
+          "recall": 0.9456,
+          "f1": 0.1182,
+          "false_negative_rate": 0.0544,
+          "confusion_matrix": {
+            "tn": 5785,
+            "fp": 13958,
+            "fn": 54,
+            "tp": 939
+          }
+        },
+        "high": {
+          "threshold": 0.1123,
+          "accuracy": 0.9587,
+          "precision": 0.5576,
+          "recall": 0.6626,
+          "f1": 0.6056,
+          "false_negative_rate": 0.3374,
+          "confusion_matrix": {
+            "tn": 19221,
+            "fp": 522,
+            "fn": 335,
+            "tp": 658
+          }
+        },
+        "critical": {
+          "threshold": 0.1516,
+          "accuracy": 0.9621,
+          "precision": 0.5954,
+          "recall": 0.6506,
+          "f1": 0.6218,
+          "false_negative_rate": 0.3494,
+          "confusion_matrix": {
+            "tn": 19304,
+            "fp": 439,
+            "fn": 347,
+            "tp": 646
+          }
+        }
+      },
+      "reliability_curve": [
+        {
+          "mean_predicted": 0.0132,
+          "observed_rate": 0.0072,
+          "n": 2083
+        },
+        {
+          "mean_predicted": 0.0139,
+          "observed_rate": 0.0111,
+          "n": 2971
+        },
+        {
+          "mean_predicted": 0.0141,
+          "observed_rate": 0.012,
+          "n": 4586
+        },
+        {
+          "mean_predicted": 0.0143,
+          "observed_rate": 0.0205,
+          "n": 2145
+        },
+        {
+          "mean_predicted": 0.0149,
+          "observed_rate": 0.0159,
+          "n": 2082
+        },
+        {
+          "mean_predicted": 0.0158,
+          "observed_rate": 0.0096,
+          "n": 2080
+        },
+        {
+          "mean_predicted": 0.0182,
+          "observed_rate": 0.0173,
+          "n": 2079
+        },
+        {
+          "mean_predicted": 0.0243,
+          "observed_rate": 0.0155,
+          "n": 2130
+        },
+        {
+          "mean_predicted": 0.0372,
+          "observed_rate": 0.0275,
+          "n": 2076
+        },
+        {
+          "mean_predicted": 0.3358,
+          "observed_rate": 0.3465,
+          "n": 2075
+        }
+      ]
+    },
+    "random_forest": {
+      "roc_auc": 0.8763,
+      "pr_auc": 0.5403,
+      "brier_uncalibrated": 0.0642,
+      "brier_calibrated": 0.0285,
+      "thresholds": {
+        "moderate": 0.0145,
+        "high": 0.0991,
+        "critical": 0.1338
+      },
+      "at_thresholds": {
+        "moderate": {
+          "threshold": 0.0145,
+          "accuracy": 0.2873,
+          "precision": 0.0607,
+          "recall": 0.9597,
+          "f1": 0.1142,
+          "false_negative_rate": 0.0403,
+          "confusion_matrix": {
+            "tn": 5005,
+            "fp": 14738,
+            "fn": 40,
+            "tp": 953
+          }
+        },
+        "high": {
+          "threshold": 0.0991,
+          "accuracy": 0.9601,
+          "precision": 0.5722,
+          "recall": 0.6626,
+          "f1": 0.6141,
+          "false_negative_rate": 0.3374,
+          "confusion_matrix": {
+            "tn": 19251,
+            "fp": 492,
+            "fn": 335,
+            "tp": 658
+          }
+        },
+        "critical": {
+          "threshold": 0.1338,
+          "accuracy": 0.9633,
+          "precision": 0.6128,
+          "recall": 0.6344,
+          "f1": 0.6235,
+          "false_negative_rate": 0.3656,
+          "confusion_matrix": {
+            "tn": 19345,
+            "fp": 398,
+            "fn": 363,
+            "tp": 630
+          }
+        }
+      },
+      "reliability_curve": [
+        {
+          "mean_predicted": 0.0107,
+          "observed_rate": 0.0034,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0132,
+          "observed_rate": 0.0101,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0146,
+          "observed_rate": 0.0135,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0158,
+          "observed_rate": 0.013,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0171,
+          "observed_rate": 0.0145,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0186,
+          "observed_rate": 0.0121,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0205,
+          "observed_rate": 0.0174,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0239,
+          "observed_rate": 0.0212,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.0339,
+          "observed_rate": 0.0193,
+          "n": 2074
+        },
+        {
+          "mean_predicted": 0.3186,
+          "observed_rate": 0.3549,
+          "n": 2074
+        }
+      ]
+    }
+  },
+  "thresholds": {
+    "moderate": 0.0142,
+    "high": 0.1123,
+    "critical": 0.1516
+  },
+  "primary_model": "xgboost",
+  "version": "risk-xgb-202611061352",
+  "shap_global": [
+    {
+      "feature": "vibration_dev",
+      "mean_abs_shap": 0.6379
+    },
+    {
+      "feature": "temperature_dev",
+      "mean_abs_shap": 0.4531
+    },
+    {
+      "feature": "inspection_status",
+      "mean_abs_shap": 0.1034
+    },
+    {
+      "feature": "weather_severity",
+      "mean_abs_shap": 0.0491
+    },
+    {
+      "feature": "load_pct",
+      "mean_abs_shap": 0.0348
+    },
+    {
+      "feature": "pressure_dev",
+      "mean_abs_shap": 0.0322
+    },
+    {
+      "feature": "equipment_age_years",
+      "mean_abs_shap": 0.0303
+    },
+    {
+      "feature": "vibration_trend",
+      "mean_abs_shap": 0.0176
+    },
+    {
+      "feature": "temperature_trend",
+      "mean_abs_shap": 0.0139
+    },
+    {
+      "feature": "production_intensity",
+      "mean_abs_shap": 0.0118
+    },
+    {
+      "feature": "maintenance_delay_days",
+      "mean_abs_shap": 0.0033
+    },
+    {
+      "feature": "shift_hours",
+      "mean_abs_shap": 0.0027
+    },
+    {
+      "feature": "previous_incidents",
+      "mean_abs_shap": 0.0
+    }
+  ],
+  "shap_note": "SHAP values are in log-odds of the uncalibrated XGBoost margin; they describe model behaviour, not physical causation."
+}

@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+.env
+*.db
+*.db-shm
+*.db-wal
+storage/
+node_modules/
+frontend/dist/
+frontend/.vite/
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.log
+.DS_Store
+# Trained artifacts in models/ ARE committed intentionally (small, ~7 MB) so the app runs out of the box.
+# Regenerate with: python -m app.ml.training.train_all
+models/risk_model_backup.joblib
